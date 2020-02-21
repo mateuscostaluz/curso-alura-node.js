@@ -6,6 +6,13 @@ const express = require("express");
 // o que retorna do require("express") é uma função, então precisamos chamá-la
 const app = express();
 // chamamos a função retornada e recebemos um objeto do express que podemos utilizar para configurar nossa aplicação
+const bodyParser = require('body-parser');
+
+app.use('/estatico', express.static('src/app/public'));
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 const rotas = require('../app/rotas/rotas');
 // configura o documento com as rotas
